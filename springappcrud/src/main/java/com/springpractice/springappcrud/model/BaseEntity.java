@@ -1,10 +1,7 @@
 package com.springpractice.springappcrud.model;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -18,15 +15,18 @@ public class BaseEntity {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
 @CreatedDate
+@Column(name = "created")
 private Date created;
 
 @LastModifiedDate
+@Column(name = "updated")
 private Date updated;
 
-
-private UserStatus userstatus;
+@Enumerated(EnumType.STRING)
+@Column(name = "status")
+private Status status;
 }
 
