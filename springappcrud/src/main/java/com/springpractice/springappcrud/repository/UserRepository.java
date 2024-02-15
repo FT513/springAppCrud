@@ -12,6 +12,11 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
 List<User> findAll();
 
+User findUserByUsername(String username);
+
+User findUserById(long id);
+
+
 User save(User user);
 
 void delete(User user);
